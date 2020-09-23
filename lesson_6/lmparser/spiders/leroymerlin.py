@@ -26,7 +26,7 @@ class LeroymerlinSpider(scrapy.Spider):
         loader = ItemLoader(item=LmparserItem(), response=response)
         loader.add_xpath('name', "//h1/text()")
         loader.add_xpath('price', '//span[@slot = "price"]/text()')
-        loader.add_xpath('photo', "//source[contains(@srcset, '2000')]/@data-origin")
+        loader.add_xpath('photo', "//img[@alt='product image']/@src")
         loader.add_xpath('keys', "//div[@class='def-list__group']//dt/text()")
         loader.add_xpath('values', "//div[@class='def-list__group']//dd/text()")
         loader.add_value('url', response.url)
